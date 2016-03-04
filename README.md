@@ -14,13 +14,15 @@ To achieve [PageSpeed Insights](https://developers.google.com/speed/pagespeed/in
 - Async JS requests and minified JS code
 
 To scroll at 60 frames per second on the pizzeria page:
-- Optimized code for resizing pizza images using input from a slider
+- Optimized JS code for resizing pizza images using input from a slider
 - Deletion of feature measuring the difference in size, which was not useful
 - Optimized for-loops that avoid recalculation of unchanging values
-- Use of getElementsByClassName instead of querySelectorAll
-- Use of window.PageYOffset instead of document.body.scrollTop
+- Replacement of several commands:
+    - getElementsByClassName instead of querySelectorAll, for efficiency
+    - window.PageYOffset instead of document.body.scrollTop, for Firefox
+    - style.transform instead of style.left to reposition background images
 - Reduced number of background images generated during window scroll
-- Addition of "backface-visibility:hidden" in CSS
+- Addition of properties to the mover class in the CSS file
 
 Other features specified in the grading rubric:
 - Explanatory comments in the JS file for the pizza page

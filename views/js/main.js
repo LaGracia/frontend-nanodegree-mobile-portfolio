@@ -573,6 +573,7 @@ function logAverageFrame(times) {
 * t/project-4-how-do-i-optimize-the-background-pizzas-for-loop/36302
 * Other solutions are thanks to the post by andrew_R: discussions.udacity.com/-
 * t/understanding-parameters-for-moving-pizzas/37721
+* Thanks to these students on GitHub: AshleyED, staffordp, beauchef, mojason-81
 */
 
 // Gets all images in the mover class from the DOM for use in updatePositions
@@ -583,7 +584,7 @@ var items = document.getElementsByClassName("mover");
 * Increments image load by 1 as window is scrolled; stores timestamp at start
 * Calculates new image position based on distance scrolled from page top
 * Stores an array of 5 new positions derived from the above calculation
-* Uses array values to move each image by adding to the CSS for its left position
+* Uses array values to move each image by adding a transform property to its CSS
 * Stores the timestamp at the end of the scroll
 * Measures the time elapsed from start to end in the loading of images
 * Determines if number of times images are loaded is exactly divisible by 10
@@ -594,17 +595,20 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var i;
-
-  var newPosition = (window.pageYOffset / 1250);
-  var positionArray = [];
-  for (i = 0; i < 5; i++) {
-    positionArray.push(Math.sin(newPosition + i));
-  }
-
+  var newPosition = window.pageYOffset / 1250;
+//  var positionArray = [];
+  var itemsLength = items.length;
   var position;
-  for (i = 0; i < items.length; i++) {
-    position = positionArray[i % 5];
-    items[i].style.left = items[i].startingLeft + 100 * position + "px";
+
+//  for (i = 0; i < 5; i++) {
+//    positionArray.push(Math.sin(newPosition + i));
+//  }
+
+  for (i = 0; i < itemsLength; i++) {
+//    position = positionArray[i % 5];
+//    items[i].style.left = items[i].startingLeft + 100 * position + "px";
+    position = Math.sin(newPosition + i % 5) * 100;
+    items[i].style.transform = "translateX(" + position + "px)";
   }
 
   window.performance.mark("mark_end_frame");
@@ -628,15 +632,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var colWidth = 256;
+  var movingPizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement("img");
     elem.className = "mover";
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.startingLeft = (i % cols) * colWidth;
+    elem.style.left = (i % cols) * colWidth + "px";
     elem.style.top = (Math.floor(i / cols) * colWidth) + "px";
-    document.getElementById("movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
