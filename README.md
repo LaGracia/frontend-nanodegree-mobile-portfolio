@@ -9,11 +9,11 @@ To achieve PageSpeed Insights scores above 90:
 - Inlined CSS and minified JSS
 - Async JavaScript requests 
 To achieve 60 frames per second on page scroll:
-- Optimized JavaScript (using getElementsByClassName instead of querySelectorAll)
+- Use of getElementsByClassName instead of querySelectorAll
 
 ### Credits
 
-As always, I completed this project mainly by learning from others the discussion forum. So, many thanks to everyone who posted questions and answered them there!
+As always, I completed this project mainly by learning from others the discussion forum, so thanks to everyone who posted questions and answered them there. Thanks in particular to mcs, who explained the JS to optimize step by step.
 
 ### License
 
