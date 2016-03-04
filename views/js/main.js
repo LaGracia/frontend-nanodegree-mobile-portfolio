@@ -480,7 +480,7 @@ var resizePizzas = function(size) {
   // The function to determine size difference after resizing has been deleted.
 
   /*
-  * Receives input of 1, 2 or 3 from DOM element sizeSlider
+  * Receives input of 1, 2 or 3 from the range-input DOM element sizeSlider
   * Matches that value with a case and defines a width value for each image
   * Returns a message in the console if no matching case is found
   * Gets all DOM elements in the randomPizzaContainer class
@@ -521,7 +521,7 @@ var resizePizzas = function(size) {
   console.log("Time to resize pizzas: " + timeToResize[timeToResize.length-1].duration + "ms");
 };
 
-// Stores timestamp at start of page load, when pizza images are generated
+// Stores the timestamp at the start of page load, when images are generated
 window.performance.mark("mark_start_generating");
 
 /*
@@ -536,7 +536,7 @@ for (var i = 2; i < 100; i++) {
 
 /*
 * Stores the timestamp at the end of the page load
-* Measures the time taken for pizza images to be generated, from start to end
+* Measures the time taken for the images to be generated, from start to end
 * Logs a list of these measurements to the console in a string
 */
 window.performance.mark("mark_end_generating");
@@ -573,10 +573,9 @@ function logAverageFrame(times) {
 * t/project-4-how-do-i-optimize-the-background-pizzas-for-loop/36302
 * Other solutions are thanks to the post by andrew_R: discussions.udacity.com/-
 * t/understanding-parameters-for-moving-pizzas/37721
-* Thanks to these students on GitHub: AshleyED, staffordp, 
 */
 
-// Gets all images in mover class from the DOM for use in updatePositions
+// Gets all images in the mover class from the DOM for use in updatePositions
 var items = document.getElementsByClassName("mover");
 
 /*
@@ -584,7 +583,7 @@ var items = document.getElementsByClassName("mover");
 * Increments image load by 1 as window is scrolled; stores timestamp at start
 * Calculates new image position based on distance scrolled from page top
 * Stores an array of 5 new positions derived from the above calculation
-* Uses array values to move each image by changing its initial left-position CSS
+* Uses array values to move each image by adding to the CSS for its left position
 * Stores the timestamp at the end of the scroll
 * Measures the time elapsed from start to end in the loading of images
 * Determines if number of times images are loaded is exactly divisible by 10
@@ -621,10 +620,10 @@ window.addEventListener('scroll', updatePositions);
 
 /* 
 * Determines if HTML has been loaded and parsed; creates the background images
-* Iterates through the pizza image 24 times, incrementing by 1 each time
+* Iterates through the image 24 times, incrementing by 1 each time
 * Assigns class name; defines source, height, width, left and top positions
-* Gets the DOM element with the movingPizzas1 id and appends the images
-* Calls the updatePositions function, which resets the image positions
+* Gets the DOM element with the movingPizzas1 id and appends the images to it
+* Calls the updatePositions function, which resets image positions during scroll
 */
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
