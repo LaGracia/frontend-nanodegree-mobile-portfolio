@@ -1,6 +1,8 @@
 ## Description
 
-Project 4 of the Udacity Front-End Web Development Nanodegree was website optimization. In addition, we used build tools to automate the tasks involved, such as image compression. This process results in two versions of each file. The development folder contains the version for the web developer, and the production folder contains the optimized version used for the actual site.
+Project 4 of the Udacity Front-End Web Development Nanodegree was [website optimization](https://github.com/LaGracia/frontend-nanodegree-mobile-portfolio/tree/master/dev).
+
+In addition, we used build tools to automate the tasks involved, such as image compression. This process results in two versions of each file. The development folder contains the version for the web developer, and the production folder contains the optimized version used for the actual site.
 
 I used [Grunt](http://gruntjs.com/) to automate the optimization of CSS, JS and PNG files needed for the site. (I ran into errors installing every Grunt plugin available for optimizing JPEGs, so that was done manually.)
 
