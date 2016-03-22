@@ -1,10 +1,11 @@
 ## Description
 
-Project 4 of the Udacity Front-End Web Development Nanodegree was the optimization of Cameron Pittman’s portfolio. There were two parts to the project: 
+Project 4 of the Udacity Front-End Web Development Nanodegree was the optimization of Cameron Pittman’s portfolio. There were two parts to the project:
+
   1. optimize the critical rendering path of the main page
   2. rewrite JavaScript for the pizzeria page to make it render faster
 
-The optimizations should load the site quickly and provide smooth browser animations on the pizzeria page. The site is best experienced using Chrome, but it has also been tested on Firefox for Mac.
+The optimizations should load the main page quickly and provide smooth browser animations on the pizzeria page. The site is best experienced using Chrome, but it has also been tested on Firefox for Mac.
 
 ### Features
 

@@ -154,6 +154,7 @@ String.prototype.capitalize = function() {
 * Defines each case as as an adjective containing an array of more adjectives
 * Returns an array if x matches a case name, or scientific_default if not
 */
+
 function getAdj(x){
   switch(x) {
     case "dark":
@@ -222,6 +223,7 @@ function getAdj(x){
 * Defines each case as a noun containing an array of more nouns
 * Returns an array if y matches a case name, or scifi_default if not
 */
+
 function getNoun(y) {
   switch(y) {
     case "animals":
@@ -304,6 +306,7 @@ var nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "pl
 * Concatenates "The" with the adjective, a space, and the noun
 * Returns the resulting string, which is a new pizza name
 */
+
 function generator(adj, noun) {
   var adjectives = getAdj(adj);
   var nouns = getNoun(noun);
@@ -318,6 +321,7 @@ function generator(adj, noun) {
 * Generates random indexes to pull a case from each of the global arrays
 * Calls the generator function and accesses the randomly chosen cases
 */
+
 function randomName() {
   var randomNumberAdj = parseInt(Math.random() * adjectives.length);
   var randomNumberNoun = parseInt(Math.random() * nouns.length);
@@ -371,6 +375,7 @@ var ingredientItemizer = function(string) {
 * Calls the selector within the itemizer on the sauce and crust arrays
 * Returns a string which is a concatenation of all the above results
 */
+
 var makeRandomPizza = function() {
   var pizza = "";
 
@@ -406,6 +411,7 @@ var makeRandomPizza = function() {
 * Creates list, calls makeRandomPizza function for contents, adds to description
 * Returns the container div, which consists of all the other elements
 */
+
 var pizzaElementGenerator = function(i) {
   var pizzaContainer,
       pizzaImageContainer,
@@ -459,6 +465,7 @@ var resizePizzas = function(size) {
   * Gets DOM element with pizzaSize id; changes content with specified string
   * Returns a message in the console if no matching case is found
   */
+
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
@@ -486,17 +493,18 @@ var resizePizzas = function(size) {
   * Gets all DOM elements in the randomPizzaContainer class
   * For each, adds % sign to width value to change the width style property
   */
+
   function changePizzaSizes(size) {
     switch(size) {
       case "1":
-      newWidth = 25;
-      break;
+        newWidth = 25;
+        break;
       case "2":
-      newWidth = 33.3;
-      break;
+        newWidth = 33.3;
+        break;
       case "3":
-      newWidth = 50;
-      break;
+        newWidth = 50;
+        break;
       default:
         console.log("bug in sizeSwitcher");
   }
@@ -515,6 +523,7 @@ var resizePizzas = function(size) {
   * Measures the duration of resizing from start time to end time
   * Logs a list of these measurements to the console in a string
   */
+
   window.performance.mark("mark_end_resize");
   window.performance.measure("measure_pizza_resize", "mark_start_resize", "mark_end_resize");
   var timeToResize = window.performance.getEntriesByName("measure_pizza_resize");
@@ -529,6 +538,7 @@ window.performance.mark("mark_start_generating");
 * Loops through this 100 times, incrementing by 2 each time
 * Calls the function that creates pizzaContainer divs; appends to randomPizzas
 */
+
 var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -539,6 +549,7 @@ for (var i = 2; i < 100; i++) {
 * Measures the time taken for the images to be generated, from start to end
 * Logs a list of these measurements to the console in a string
 */
+
 window.performance.mark("mark_end_generating");
 window.performance.measure("measure_pizza_generation", "mark_start_generating", "mark_end_generating");
 var timeToGenerate = window.performance.getEntriesByName("measure_pizza_generation");
@@ -557,6 +568,7 @@ var frame = 0;
 * Loops through the list to calculate average time to load all frames
 * Divides that result by 10 and logs that as milliseconds in a string
 */
+
 function logAverageFrame(times) {
   var numberOfEntries = times.length;
   var sum = 0;
@@ -590,24 +602,23 @@ var items = document.getElementsByClassName("mover");
 * Determines if number of times images are loaded is exactly divisible by 10
 * Gets a list of these measurements and calls the logAverageFrame function
 */
+
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
   var i;
   var newPosition = window.pageYOffset / 1250;
-//  var positionArray = [];
   var itemsLength = items.length;
+  var positionArray = [];
   var position;
 
-//  for (i = 0; i < 5; i++) {
-//    positionArray.push(Math.sin(newPosition + i));
-//  }
+  for (i = 0; i < 5; i++) {
+    positionArray.push(Math.sin(newPosition + i) * 100);
+  }
 
   for (i = 0; i < itemsLength; i++) {
-//    position = positionArray[i % 5];
-//    items[i].style.left = items[i].startingLeft + 100 * position + "px";
-    position = Math.sin(newPosition + i % 5) * 100;
+    position = positionArray[i % 5];
     items[i].style.transform = "translateX(" + position + "px)";
   }
 
@@ -624,23 +635,32 @@ window.addEventListener('scroll', updatePositions);
 
 /* 
 * Determines if HTML has been loaded and parsed; creates the background images
-* Iterates through the image 24 times, incrementing by 1 each time
-* Assigns class name; defines source, height, width, left and top positions
+* Iterates through the image 200 times until maximum window height is reached
+* Defines image class name, source, height, width, and top and left positions
 * Gets the DOM element with the movingPizzas1 id and appends the images to it
 * Calls the updatePositions function, which resets image positions during scroll
 */
+
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var colWidth = 256;
+  var rowTop = 0;
+  var maxHeight = window.innerHeight;
   var movingPizzas = document.getElementById("movingPizzas1");
-  for (var i = 0; i < 24; i++) {
+
+  for (var i = 0; i < 200; i++) {
+    rowTop = (Math.floor(i / cols) * colWidth);
+    if (rowTop > maxHeight) {
+      break;
+    }
+
     var elem = document.createElement("img");
     elem.className = "mover";
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
+    elem.style.top = rowTop + "px";
     elem.style.left = (i % cols) * colWidth + "px";
-    elem.style.top = (Math.floor(i / cols) * colWidth) + "px";
     movingPizzas.appendChild(elem);
   }
   updatePositions();
