@@ -12,12 +12,12 @@ module.exports = function(grunt) {
                     ext: '.png'
                 },
                 files: [{
-                    src: 'dev/img/*.png',
-                    dest: 'prod/img/'
+                    src: 'source/img/*.png',
+                    dest: 'build/img/'
                 },
                 {
-                    src: 'dev/views/images/*.png',
-                    dest: 'prod/views/images/'
+                    src: 'source/views/images/*.png',
+                    dest: 'build/views/images/'
                 }]
             }
         },
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         inlinestyles: {
             main: {
                 files: {
-                    'prod/index.html': 'dev/index.html'
+                    'build/index.html': 'source/index.html'
                 }
             }
         },
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         cssmin: {
             views: {
                 files: {
-                    'prod/views/css/stylesheet.min.css': ['dev/views/css/*.css']
+                    'build/views/css/stylesheet.min.css': ['source/views/css/*.css']
                 }
             }
         },
@@ -42,16 +42,16 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: 'dev/js/',
+                    cwd: 'source/js/',
                     src: '**.js',
-                    dest: 'prod/js/',
+                    dest: 'build/js/',
                     ext: '.min.js'
                 },
                 {
                     expand: true,
-                    cwd: 'dev/views/js/',
+                    cwd: 'source/views/js/',
                     src: '**.js',
-                    dest: 'prod/views/js/',
+                    dest: 'build/views/js/',
                     ext: '.min.js'
                 }]
             }
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         'string-replace': {
             main: {
                 files: {
-                    'prod/index.html': 'prod/index.html'
+                    'build/index.html': 'build/index.html'
                 },
                 options: {
                     replacements: [{
@@ -71,24 +71,24 @@ module.exports = function(grunt) {
             },
             views: {
                 files: {
-                    'prod/views/pizza.html': 'dev/views/pizza.html'
+                    'build/views/pizza.html': 'source/views/pizza.html'
                 },
                 options: {
                     replacements: [{
-                        pattern: '<!-- start of dev css ref -->',
-                        replacement: '<!-- start of dev css ref'
+                        pattern: '<!-- Start of source CSS ref -->',
+                        replacement: '<!-- Start of source CSS ref'
                     },
                     {
-                        pattern: '<!-- end of dev css ref -->',
-                        replacement: 'end of dev css ref -->'
+                        pattern: '<!-- End of source CSS ref -->',
+                        replacement: 'End of source CSS ref -->'
                     },
                     {
-                        pattern: '<!-- start of prod css ref',
-                        replacement: '<!-- start of prod css ref -->'
+                        pattern: '<!-- Start of build CSS ref',
+                        replacement: '<!-- Start of build CSS ref -->'
                     },
                     {
-                        pattern: 'end of prod css ref -->',
-                        replacement: '<!-- end of prod css ref -->'
+                        pattern: 'End of build CSS ref -->',
+                        replacement: '<!-- End of build CSS ref -->'
                     },
                     {
                         pattern: 'main.js',
