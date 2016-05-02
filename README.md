@@ -14,7 +14,7 @@ To generate build files from the files in the source folder:
 - Install the Grunt [plugins](http://gruntjs.com/plugins) listed in package.json
 - Enter "grunt" in the Terminal
 
-Only the main page and the pizzeria page needed to be optimized for the project. The site can be viewed on [GitHub Pages](http://lagracia.github.io/frontend-nanodegree-mobile-portfolio/).
+Only the main page and the pizzeria page needed to be optimized for the project. The site can be viewed on [GitHub Pages](http://lagracia.github.io/frontend-nanodegree-mobile-portfolio/build/).
 
 ### Project details
 
