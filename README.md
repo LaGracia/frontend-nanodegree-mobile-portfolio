@@ -22,7 +22,7 @@ A list of all the optimizations I made can be found in the second [ReadMe](https
 
 ### Credits
 
-As always, I completed this project mainly by learning from others the Udacity discussion forum, so thanks to all who posted questions and answered them there. Thanks in particular to andrew_R and Susan for their instructions on how to work with source and build files.
+As always, I completed this project mainly by learning from others in the Udacity discussion forum, so thanks to all who posted questions and answered them there. Thanks in particular to andrew_R and Susan for their instructions on how to work with source and build files.
 
 I followed Chris Coyier's excellent explanation on [24ways.org](https://24ways.org/2013/grunt-is-not-weird-and-hard/) for how to install, configure and use Grunt. Thanks also to David Bulté for his helpful instructions on [Stack Overflow](http://stackoverflow.com/questions/20337819/change-link-or-script-filename-in-html-after-gruntjs-minify-uglify) for how to use the string-replace plugin.
 
