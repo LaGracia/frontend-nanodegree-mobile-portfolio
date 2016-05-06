@@ -31,4 +31,4 @@ Other features required for code review:
 
 ### Credits
 
-As always, I completed this project mainly by learning from others the discussion forum, so thanks to all who posted questions and answered them there. Thanks in particular to mcs for explaining the JS optimizations needed for the pizza page.
+As always, I completed this project mainly by learning from others in the discussion forum, so thanks to all who posted questions and answered them there. Thanks in particular to mcs for explaining the JS optimizations needed for the pizza page.
